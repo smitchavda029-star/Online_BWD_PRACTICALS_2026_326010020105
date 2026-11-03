@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practical 10 - College Information & Location</title>
+</head>
+<body>
+    <style>
+    body {
+            font-family: Arial, sans-serif;
+            background-color: #4e85d7;
+            margin: 0;
+            padding: 20px;
+            color: #392222;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: beige;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #2531a19c;
+            text-align: center;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #0f172a;
+            margin-top: 25px;
+        }
+
+        .geo-btn {
+            background-color: #0284c7;
+            color: white;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .geo-btn:hover {
+            background-color: #0369a1;
+        }
+
+        #location-output {
+            margin-top: 15px;
+            padding: 12px;
+            background-color: #f1f5f9;
+            border-left: 4px solid #0284c7;
+            font-weight: bold;
+        }
+
+        .iframe-container {
+            margin-top: 15px;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 6px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 350px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+        }
+
+        .explanation-box {
+            background-color: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        .explanation-box h3 {
+            margin-top: 0;
+            color: #b45309;
+        }
+
+        .explanation-box ul {
+            margin-bottom: 0;
+            padding-left: 20px;
+        }
+    </style>
+</body>
+<body>
+    <div class="container">
+        <h1>Marwadi University - Campus Info & Location</h1>
+        <section>
+            <h2>1. Find Your Coordinates (HTML5 Geolocation)</h2>
+            <p>Click the button below to get your current latitude and longitude using HTML5 Geolocation API:</p>
+            <button class="geo-btn" onclick="getLocation()">Get My Location</button>
+            <div id="location-output">Click the button above to fetch coordinates.</div>
+        </section>
+        <hr style="margin-top: 30px; border: 0; border-top: 1px solid #e2e8f0;">
+
+
+    <section>
+            <h2>2. College Location Map (Embedded iFrame)</h2>
+            <p>Below is the interactive map displaying the location of Marwadi University campus:</p>
+            <div class="iframe-container">
+                <iframe 
+                    src="https://maps.google.com/maps?q=Marwadi%20University%20Rajkot&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </section>
+        <div class="explanation-box">
+            <h3>Purpose of using an &lt;iframe&gt;:</h3>
+            <ul>
+                <li><strong>Embedding External Content:</strong> It allows seamless integration of third-party interactive elements (like Google Maps, YouTube videos, or external webpages) directly into your website.</li>
+                <li><strong>Independent Loading:</strong> Content inside an <code>&lt;iframe&gt;</code> loads independently of the main page, preventing slow external media from blocking the rest of the site from rendering.</li>
+                <li><strong>Code Reusability & Isolation:</strong> It keeps the code clean by isolating external JavaScript, CSS, and HTML within its own frame without affecting the styles of the parent webpage.</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        function getLocation() {
+            const output = document.getElementById("location-output");
+
+            if (navigator.geolocation) {
+                output.innerText = "Locating... Please allow location access if prompted.";
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                output.innerText = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            const output = document.getElementById("location-output");
+            output.innerHTML = `<strong>Latitude:</strong> ${lat} <br> <strong>Longitude:</strong> ${lon}`;
+        }
+
+        function showError(error) {
+            const output = document.getElementById("location-output");
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    output.innerText = "User denied the request for Geolocation.";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    output.innerText = "Location information is unavailable.";
+                    break;
+                case error.TIMEOUT:
+                    output.innerText = "The request to get user location timed out.";
+                    break;
+                case error.UNKNOWN_ERROR:
+                    output.innerText = "An unknown error occurred.";
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
