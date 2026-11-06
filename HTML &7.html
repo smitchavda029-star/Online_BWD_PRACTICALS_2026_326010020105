@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            background-color: bisque;
+            color: black;
+            font-family: fantasy;
+            margin: 0;
+        }
+        form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #333;
+            padding: 25px;
+            border-radius: 25px;
+            box-shadow: 0 4px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin: 6px;
+            font-weight: 200;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            box-sizing: border-box;
+            margin-top: 5px;
+        }
+        .inline-group {
+            display: flex;
+            gap: 15px;
+            align-content: center;
+        }
+        .inline-group label {
+            font-weight: normal;
+        }
+        button {
+            width: 100%;
+            max-width: 1000px;
+            padding: 2px;
+            background-color: #60bcf1;
+            color: rgb(20, 20, 19);
+            border: none;
+            border-radius: 4px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #333;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Student Registration Form</h1>
+        <form action="#" method="post"></form>
+    </div>
+    <div class="form-group">
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="Full Name" placeholder="Enter your full name" required>
+    </div>
+    <div class="form-group">
+        <label for="emailid:">Email ID:</label>
+        <input type="text" id="Email ID" placeholder="example@domin.com"required>
+    </div>
+    <div for="form-group">
+    <label for="Password:">Password:</label>
+    <input type="text" id="Password" placeholder="Password" required>
+    </div>
+    <div class="form-group">
+        <label for="Gender:">Gender:</label>
+        <div class="inline-group">
+            <input type="radio" id="Male" name="gender" value="Male" required>
+            <label for="Male">Male</label>
+            <input type="radio" id="Female" name="gender" value="Female" required>
+            <label for="Female">Female</label>
+            <input type="radio" id="Other" name="gender" value="Other" required>
+            <label for="Other">Other</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="DOB">DOB</label>
+        <input type="text" id="DOB" placeholder="00/00/0000" required>
+    </div>
+    <div class="form-group">
+        <label for="City">City</label>
+        <input type="text" id="City" placeholder="Example: Rajkot,Gujarat" required>
+    </div>
+    <div class="form-group">
+        <label for="Course">Corse</label>
+        <select id="Course" name="Course" required>
+            <option value="" disabled selected>Select your course</option>
+                <option value="BCA">BCA</option>
+                <option value="MBA">B.Tech</option>
+                <option value="B.Com">B.Sc</option>
+                <option value="MCA">MCA</option>
+        </select>
+    </div>
+    <div class="form-group">
+            <label>Hobbies:</label>
+            <div class="inline-group">
+                <input type="checkbox" id="coding" name="hobbies" value="coding">
+                <label for="coding">Coding</label>
+                <input type="checkbox" id="reading" name="hobbies" value="reading">
+                <label for="reading">Reading</label>
+                <input type="checkbox" id="sports" name="hobbies" value="sports">
+                <label for="sports">Sports</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="4" placeholder="Enter full address" required></textarea>
+        </div>
+        <button type="submit">Submit</button>
+
+    </form>
+</div>
+
+</body>
+</html>
+
+</body>
