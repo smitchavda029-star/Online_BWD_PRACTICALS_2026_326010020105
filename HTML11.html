@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>College Admission Form </title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <style>
+        body {
+            background-color: beige;
+            font-family: Arial, sans-serif;
+            color: brown;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+        /* Container Styling applying CSS Box Model */
+        .form-container {
+            background-color: #ffffff;
+            max-width: 550px;
+            width: 100%;
+            padding: 35px 40px;
+            margin: 20px auto;
+            border: 1px solid #d1d5db;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Heading Text Effects */
+        h2 {
+            text-align: center;
+            color: brown;
+            margin-bottom: 25px;
+            font-size: 26px;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            border-bottom: 3px solid #2563eb;
+            padding-bottom: 10px;
+        }
+
+        /* Form Layout & Spacing */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+        /* Form Elements Styling using Element & Attribute Selectors */
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #9ca3af;
+            border-radius: 6px;
+            font-size: 15px;
+            color: #1f2937;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+            /* Pseudo-class Selectors for Interactive Focus Effects */
+            input:focus,
+            select:focus,
+            textarea:focus {
+                border-color: #2563eb;
+                box-shadow: 0 0 6px rgba(37, 99, 235, 0.4);
+            }
+
+        /* Inline Elements (Radio & Checkbox) Grouping */
+        .radio-group, .checkbox-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            padding-top: 4px;
+        }
+
+            .radio-group label, .checkbox-group label {
+                font-weight: normal;
+                cursor: pointer;
+                margin-bottom: 0;
+            }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        /* Submit Button Styling */
+        button[type="submit"] {
+            width: 100%;
+            background-color: #2563eb;
+            color: #ffffff;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+        }
+
+            button[type="submit"]:hover {
+                background-color: #1d4ed8;
+            }
+
+            button[type="submit"]:active {
+                transform: scale(0.98);
+            }
+
+
+
+    </style>
+    <h2>Admission Application Form</h2>
+
+    <form action="#" method="POST">
+        <!-- Full Name -->
+        <div class="form-group">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+        </div>
+
+        <!-- Email Address -->
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+        </div>
+
+        <!-- Phone Number -->
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter 10-digit phone number" required>
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" required>
+        </div>
+
+        <!-- Gender -->
+        <div class="form-group">
+            <label>Gender</label>
+            <div class="radio-group">
+                <label><input type="radio" name="gender" value="male" required> Male</label>
+                <label><input type="radio" name="gender" value="female"> Female</label>
+                <label><input type="radio" name="gender" value="other"> Other</label>
+            </div>
+        </div>
+
+        <!-- Course Selection -->
+        <div class="form-group">
+            <label for="course">Course Applying For</label>
+            <select id="course" name="course" required>
+                <option value="" disabled selected>Select a course</option>
+                <option value="bca">BCA - Bachelor of Computer Applications</option>
+                <option value="btech">B.Tech - Computer Engineering</option>
+                <option value="bsc">B.Sc - Information Technology</option>
+                <option value="mca">MCA - Master of Computer Applications</option>
+            </select>
+        </div>
+
+        <!-- Address -->
+        <div class="form-group">
+            <label for="address">Permanent Address</label>
+            <textarea id="address" name="address" placeholder="Enter your full address"></textarea>
+        </div>
+
+        <!-- Declaration Checkbox -->
+        <div class="form-group">
+            <div class="checkbox-group">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I declare that all provided information is accurate.</label>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit">Submit Application</button>
+    </form>
+
+    </div>
+</body>
+</html>
