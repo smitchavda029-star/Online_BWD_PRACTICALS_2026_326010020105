@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Eligibility Checker</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family :'Courier New', Courier, monospace;
+            color :#333;
+            background-color :palevioletred;
+            font-size : 50px;
+        }
+        h2 {
+            color :#010101;
+            text-align :center;
+            font-family: 'Arial Narrow', sans-serif;
+        }
+        form-group {
+            margin-bottom :20px;
+        }
+        label {
+            display :block;
+            margin-bottom :5px;
+            font-weight :bold;
+        }
+        button {
+            background-color :#242254;
+            color :white;
+            padding :9.50px 20px;
+            border :none;
+            border-radius :10px;
+            cursor :all-scroll;
+        }
+        button:hover {
+            background-color :#d916c2;
+        }
+    </style>
+    <h2>Student Eligibility Checker</h2>
+    <form>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        <div class="form-group">
+        <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+        </div>
+        <div class="form-group">
+        <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+        </div>
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+        </div>
+        <div class="form-group">
+            <label for="gpa">GPA:</label>
+            <input type="number" id="gpa" name="gpa" step="0.01" required>
+        </div>  
+        </div>
+        <div class="form-group">
+            <label for="gpa">GPA:</label>
+            <input type="number" id="gpa" name="gpa" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="HSCMARK"> Hsc/ssc Mark Sheet</label>
+            <input type="file" id="Mark sheet" name="mark sheet "step=0.01 required>
+        </div>
+        <button type="submit">Check Eligibility</button>
+    </form>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const age = parseInt(document.getElementById('age').value);
+            const gpa = parseFloat(document.getElementById('gpa').value);
+            let eligibilityMessage = '';
+
+            if (age >= 18 && gpa >= 3.0) {
+                eligibilityMessage = 'Congratulations! You are eligible.';
+            } else {
+                eligibilityMessage = 'Sorry, you are not eligible.';
+            }
+
+            alert(eligibilityMessage);
+        });
+    </script>
+</body>
+</html>
