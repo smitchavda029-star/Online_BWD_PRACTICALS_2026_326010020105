@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practical 16 - Marksheet & Grade Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 30px;
+        }
+        .container {
+            max-width: 450px;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="number"] {
+            width: 95%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e9ecef;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Student Marksheet</h2>
+    
+    <div class="form-group">
+        <label for="sub1">PP 1 Marks (out of 100):</label>
+        <input type="number" id="sub1" min="0" max="100" placeholder="Enter marks">
+    </div>
+    
+    <div class="form-group">
+        <label for="sub2">BWD 2 Marks (out of 100):</label>
+        <input type="number" id="sub2" min="0" max="100" placeholder="Enter marks">
+    </div>
+    
+    <div class="form-group">
+        <label for="sub3">Math 3 Marks (out of 100):</label>
+        <input type="number" id="sub3" min="0" max="100" placeholder="Enter marks">
+    </div>
+
+    <button onclick="calculateMarks()">Calculate Result</button>
+
+    <div class="result" id="resultContainer" style="display:none;">
+        <p><strong>Total Marks:</strong> <span id="total"></span> / 300</p>
+        <p><strong>Percentage:</strong> <span id="percentage"></span>%</p>
+        <p><strong>Grade:</strong> <span id="grade"></span></p>
+    </div>
+</div>
+
+<script>
+    function calculateMarks() {
+        // Retrieve values from inputs and convert to numbers using parseFloat
+        let m1 = parseFloat(document.getElementById('sub1').value) || 0;
+        let m2 = parseFloat(document.getElementById('sub2').value) || 0;
+        let m3 = parseFloat(document.getElementById('sub3').value) || 0;
+
+        // Calculate Total and Percentage
+        let total = m1 + m2 + m3;
+        let percentage = (total / 300) * 100;
+        let grade = '';
+
+        // Conditional Statements for Grade Logic
+        if (percentage >= 90) {
+            grade = 'A+ (Excellent)';
+        } else if (percentage >= 75) {
+            grade = 'A (Very Good)';
+        } else if (percentage >= 60) {
+            grade = 'B (Good)';
+        } else if (percentage >= 50) {
+            grade = 'C (Satisfactory)';
+        } else if (percentage >= 40) {
+            grade = 'D (Pass)';
+        } else {
+            grade = 'F (Fail)';
+        }
+
+        // Display results on the webpage
+        document.getElementById('total').innerText = total;
+        document.getElementById('percentage').innerText = percentage.toFixed(2);
+        document.getElementById('grade').innerText = grade;
+        document.getElementById('resultContainer').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
