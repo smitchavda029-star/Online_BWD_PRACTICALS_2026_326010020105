@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iterative subject information</title>
+</head>
+<body>
+    <style>
+        body {
+            background-color: #1014ee;
+            font-family: Arial, sans-serif;
+            color:wheat;
+            justify-content: center;
+        }
+        h1 {
+            text-align: center;
+            color: rgb(244, 124, 5);
+            margin-top: 50px;
+        }
+        container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+        label {
+            font-size: 30px;
+            margin-bottom: 10px;
+            color: rgb(13, 229, 99)
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            width: 300px;
+        }detail-card h3 {
+            background-color: #444;
+            padding: 20px;
+            border-radius: 5px;
+            width: 400px;
+            margin-bottom: 20px;
+        }
+        detail-card p {
+            background-color: #555;
+            padding: 15px;
+            border-radius: 5px;
+            width: 400px;
+            margin-bottom: 10px;
+        }
+
+    </style>
+    <div class="container">
+        <h1>Iterative Subject Information</h1>
+        <label for="subject">select subject :</label>
+        <select id="subject" onchange="displaySubjectInfo()">
+            <option value="math">Math</option>
+            <option value="BWD">BWD</option>
+            <option value="AOC">AOC</option>
+            <option value="PROG"> Programming</option>
+        </select>
+        <div id="subjectInfo" class="detail-card">
+            <div id="infoBox" class="details-card">
+    <h3 id="subjectTitle"></h3>
+    <p><strong>Subject Code:</strong> <span id="subjectCode"></span></p>
+    <p><strong>Credits:</strong> <span id="subjectCredits"></span></p>
+    <p><strong>Faculty:</strong> <span id="subjectFaculty"></span></p>
+    <p><strong>Description:</strong> <span id="subjectDesc"></span></p>
+    </div>
+  </div>
+    <script>
+    // JavaScript Array of Objects containing subject details
+    const subjectsData = [
+      {
+        name: "Math",
+        code: "MATH 101",
+        credits: 3,
+        faculty: "Dr. Aditya Upadhyay",
+        description: "An introduction to mathematical concepts and techniques."
+      },
+      {
+        name: "BWD",
+        code: "BWD 202",
+        credits: 4,
+        faculty: "Prof. Hardik Chavda",
+        description: "Basics of Web Development, including HTML, CSS, and JavaScript."
+      },
+      {
+        name: "AOC",
+        code: "AOC 303",
+        credits: 3,
+        faculty: "prof. priynka sinha",
+        description: "Advanced Object-Oriented Concepts in programming."
+      },
+      {
+        name: "PROG",
+        code: "PROG 401",
+        credits: 4,
+        faculty: "Prof. Deva Rajput",
+        description: "Programming paradigms and techniques for software development."
+      }
+        ];
+
+        function displaySubjectInfo() {
+            const selected = document.getElementById("subject").value;
+            const subject = subjectsData.find(item =>
+                item.name.toLowerCase() === selected.toLowerCase()
+            );
+            if (!subject) return;
+
+            document.getElementById("subjectTitle").textContent = subject.name;
+            document.getElementById("subjectCode").textContent = subject.code;
+            document.getElementById("subjectCredits").textContent = subject.credits;
+            document.getElementById("subjectFaculty").textContent = subject.faculty;
+            document.getElementById("subjectDesc").textContent = subject.description;
+        }
+
+        displaySubjectInfo();
+    </script>
+        </div>
+    </div>
+
+</body>
+</html>
