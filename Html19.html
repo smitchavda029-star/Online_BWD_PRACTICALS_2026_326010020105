@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form with Validation</title>
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ae94e9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: chocolate;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #c4a4a4;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+    </style>
+    <div class="container">
+        <h2>Student Registration Form</h2>
+        <form id="registrationForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <div class="error" id="nameError"></div>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <div class="error" id="emailError"></div>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <div class="error" id="passwordError"></div>
+
+            
+            <div class="form-group">
+        <label for="course">Course:</label>
+        <select id="course">
+          <option value="">-- Select Course --</option>
+          <option value="BCA">BCA</option>
+          <option value="B.Tech">B.Tech</option>
+          <option value="BSc">B.Sc IT</option>
+        </select>
+        <span id="courseError" class="error-message"></span>
+      </div>
+
+            <input type="submit" value="Register">
+        </form>
+        <script>
+            document.getElementById('registrationForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // Clear previous error messages
+                document.getElementById('nameError').textContent = '';
+                document.getElementById('emailError').textContent = '';
+                document.getElementById('passwordError').textContent = '';
+                document.getElementById('courseError').textContent = '';
+
+                // Get form values
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value.trim();
+                const course = document.getElementById('course').value;
+
+                let isValid = true;
+
+                // Validate name
+                if (name === '') {
+                    document.getElementById('nameError').textContent = 'Name is required.';
+                    isValid = false;
+                }
+
+                // Validate email
+                if (email === '') {
+                    document.getElementById('emailError').textContent = 'Email is required.';
+                    isValid = false;
+                } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    document.getElementById('emailError').textContent = 'Invalid email format.';
+                    isValid = false;
+                }
+
+                // Validate password
+                if (password === '') {
+                    document.getElementById('passwordError').textContent = 'Password is required.';
+                    isValid = false;
+                } else if (password.length < 6) {
+                    document.getElementById('passwordError').textContent = 'Password must be at least 6 characters long.';
+                    isValid = false;
+                }
+
+                 // Validate course selection
+                 if (course === '') {
+                    document.getElementById('courseError').textContent = 'Please select a course.';
+                    isValid = false;
+                  }
+
+                // If all validations pass, submit the form (you can replace this with actual form submission logic)
+                if (isValid) {
+                    alert('Form submitted successfully!');
+                    // You can add your form submission logic here
+                    // For example, you can use AJAX to send the data to the server
+                    // or simply submit the form using this.submit();
+                    this.submit(); // Uncomment this line to actually submit the form
+                }
+            });
+        </script>
+
+</body>
+</html>
